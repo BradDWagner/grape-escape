@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const categorySchema = new Schema({
+const tagSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -10,13 +10,13 @@ const categorySchema = new Schema({
   },
   products: [
     {
-        type: Schema.Types.objectId,
+        type: Schema.Types.ObjectId,
         ref: 'Product',
-        requires: true
+        required: true
     }
   ]
 });
 
-const Category = mongoose.model('Category', categorySchema);
+const Category = mongoose.model('Tag', tagSchema);
 
 module.exports = Category;

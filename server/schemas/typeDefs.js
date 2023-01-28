@@ -5,7 +5,7 @@ const typeDefs = gql`
         _id: ID
         firstName: String
         lastName: String
-        email: string
+        email: String
         orders: [Order]
     }
 
@@ -20,7 +20,7 @@ const typeDefs = gql`
         name: String
         description: String
         image: String
-        quantity: Int
+        price: Number
         tags: [Tag]
         reviews: [Review]
     }
