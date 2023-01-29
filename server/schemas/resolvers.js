@@ -9,21 +9,24 @@ const resolvers = {
             return await Tag.find()
         },
         products: async () => {
-            return await Product.find()
+            return await Product.find().populate('tags')
         },
-        productsByTag: async (parent, { tag }) => {
+        productsByTag: async (parent, { tagId }) => {
             return await Product.find({
-                tags: tag
-            }).populate('tag')
+                tags: tagId
+            }).populate('tags')
         },
         product: async (parent, {_id}) => {
-            return await Product.findById(_id).populate('tag', 'review');
+            return await Product.findById(_id).populate('tags').populate('reviews').populate({
+                path: 'reviews',
+                populate: { path: 'user'}
+            });
         },
         user: async (parent, args, context) => {
             if (context.user) {
               const user = await User.findById(context.user._id).populate({
                 path: 'orders.products',
-                populate: 'tag'
+                populate: 'tags'
               });
       
               user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
@@ -37,7 +40,7 @@ const resolvers = {
             if (context.user) {
               const user = await User.findById(context.user._id).populate({
                 path: 'orders.products',
-                populate: 'category'
+                populate: 'tags'
               });
       
               return user.orders.id(_id);
@@ -85,10 +88,9 @@ const resolvers = {
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
-            // const token = signToken(user);
+            const token = signToken(user);
       
-            // return { token, user };
-            return user
+            return { token, user };
           },
           addOrder: async (parent, { products }, context) => {
             console.log(context);
@@ -122,16 +124,20 @@ const resolvers = {
               throw new AuthenticationError('Incorrect credentials');
             }
       
-            // const token = signToken(user);
+            const token = signToken(user);
       
-            // return { token, user };
-            return user
+            return { token, user };
           },
-          addComment: async (parent, {_id, comment}) => {
-            return await Product.findByIdAndUpdate(_id, { $push: {reviews: comment}}, { new: true }).populate('reviews')
+          //TODO: double check context is working right
+          addComment: async (parent, {_id, comment}, context) => {
+            const newReview = await Review.create({ comment: comment, user: context.user._id})
+            return await Product.findByIdAndUpdate(_id, { $push: {reviews: newReview}}, { new: true }).populate('reviews').populate({
+                path: 'reviews',
+                populate: { path: 'user'}
+            });
           },
           likeReview: async (parent, {_id}) => {
-            return await Review.findByIdAndUpdate(_id, { $inc: { likes: 1}}, { new: true })
+            return await Review.findByIdAndUpdate(_id, { $inc: { likes: 1}}, { new: true }).poplulate('user')
           }
     }
 };

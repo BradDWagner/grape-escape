@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
+const Review = require('./Review')
 
 const productSchema = new Schema({
   name: {
@@ -26,12 +27,13 @@ const productSchema = new Schema({
         required: true
     }
   ],
-  reviews: [
+  reviews: [    
     {
         type: Schema.Types.ObjectId,
         ref: 'Review',
+        required: true
     }
-  ]
+    ]
 });
 
 const Product = mongoose.model('Product', productSchema);

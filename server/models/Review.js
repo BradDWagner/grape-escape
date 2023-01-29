@@ -11,6 +11,11 @@ const reviewSchema = new Schema({
         type: Number,
         required: true,
         default: 0,
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 });
 

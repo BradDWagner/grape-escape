@@ -20,7 +20,7 @@ const typeDefs = gql`
         name: String
         description: String
         image: String
-        price: Number
+        price: Float
         tags: [Tag]
         reviews: [Review]
     }
@@ -34,6 +34,7 @@ const typeDefs = gql`
     type Review {
         _id: ID
         comment: String
+        user: User
         likes: Int
     }
 
@@ -49,7 +50,7 @@ const typeDefs = gql`
     type Query {
         tags: [Tag]
         products: [Product]
-        productsByTag(tag: String!): [Product]
+        productsByTag(_id: ID!): [Product]
         product(_id: ID!): Product
         user: User
         order(_id: ID!): Order
