@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Order, Tag, Review } = require('../models');
-// const { signToken } = require('../utils/auth');
+const { User, Item, Order, Tag, Review } = require('../models');
+const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -8,16 +8,16 @@ const resolvers = {
         tags: async () => {
             return await Tag.find()
         },
-        products: async () => {
-            return await Product.find().populate('tags')
+        items: async () => {
+            return await Item.find().populate('tags')
         },
-        productsByTag: async (parent, { tagId }) => {
-            return await Product.find({
+        itemsByTag: async (parent, { tagId }) => {
+            return await Item.find({
                 tags: tagId
             }).populate('tags')
         },
-        product: async (parent, {_id}) => {
-            return await Product.findById(_id).populate('tags').populate('reviews').populate({
+        item: async (parent, {_id}) => {
+            return await Item.findById(_id).populate('tags').populate('reviews').populate({
                 path: 'reviews',
                 populate: { path: 'user'}
             });
@@ -25,7 +25,7 @@ const resolvers = {
         user: async (parent, args, context) => {
             if (context.user) {
               const user = await User.findById(context.user._id).populate({
-                path: 'orders.products',
+                path: 'orders.items',
                 populate: 'tags'
               });
       
@@ -36,35 +36,35 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
           },
-          order: async (parent, { _id }, context) => {
-            if (context.user) {
-              const user = await User.findById(context.user._id).populate({
-                path: 'orders.products',
-                populate: 'tags'
-              });
+        //   order: async (parent, { _id }, context) => {
+        //     if (context.user) {
+        //       const user = await User.findById(context.user._id).populate({
+        //         path: 'orders.items',
+        //         populate: 'tags'
+        //       });
       
-              return user.orders.id(_id);
-            }
+        //       return user.orders.id(_id);
+        //     }
       
-            throw new AuthenticationError('Not logged in');
-          },
+        //     throw new AuthenticationError('Not logged in');
+        //   },
           checkout: async (parent, args, context) => {
             const url = new URL(context.headers.referer).origin;
-            const order = new Order({ products: args.products });
+            const order = new Order({ items: args.items });
             const line_items = [];
       
-            const { products } = await order.populate('products');
+            const { items } = await order.populate('items');
       
-            for (let i = 0; i < products.length; i++) {
-              const product = await stripe.products.create({
-                name: products[i].name,
-                description: products[i].description,
-                images: [`${url}/images/${products[i].image}`]
+            for (let i = 0; i < items.length; i++) {
+              const item = await stripe.items.create({
+                name: items[i].name,
+                description: items[i].description,
+                images: [`${url}/images/${items[i].image}`]
               });
       
               const price = await stripe.prices.create({
-                product: product.id,
-                unit_amount: products[i].price * 100,
+                item: item.id,
+                unit_amount: items[i].price * 100,
                 currency: 'usd',
               });
       
@@ -92,10 +92,10 @@ const resolvers = {
       
             return { token, user };
           },
-          addOrder: async (parent, { products }, context) => {
+          addOrder: async (parent, { items }, context) => {
             console.log(context);
             if (context.user) {
-              const order = new Order({ products });
+              const order = new Order({ items });
       
               await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
       
@@ -131,7 +131,7 @@ const resolvers = {
           //TODO: double check context is working right
           addComment: async (parent, {_id, comment}, context) => {
             const newReview = await Review.create({ comment: comment, user: context.user._id})
-            return await Product.findByIdAndUpdate(_id, { $push: {reviews: newReview}}, { new: true }).populate('reviews').populate({
+            return await Item.findByIdAndUpdate(_id, { $push: {reviews: newReview}}, { new: true }).populate('reviews').populate({
                 path: 'reviews',
                 populate: { path: 'user'}
             });

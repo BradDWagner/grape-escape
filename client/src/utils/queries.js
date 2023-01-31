@@ -9,9 +9,9 @@ export const QUERY_TAGS = gql`
     }
 `;
 
-export const QUERY_ALL_PRODUCTS = gql`
+export const QUERY_ALL_ITEMS = gql`
     {
-        products {
+        items {
             _id
             name
             description
@@ -25,9 +25,9 @@ export const QUERY_ALL_PRODUCTS = gql`
     }
 `;
 
-export const QUERY_PRODUCT_BY_TAG = gql`
-    query productsByTag($tagId: ID!) {
-        productsByTag(tagId: $tagId) {
+export const QUERY_ITEMS_BY_TAG = gql`
+    query itemsByTag($tagId: ID!) {
+        itemsByTag(tagId: $tagId) {
             _id
             name
             description
@@ -41,9 +41,9 @@ export const QUERY_PRODUCT_BY_TAG = gql`
     }
 `;
 
-export const QUERY_SINGLE_PRODUCT = gql`
-    query singleProduct($productId: ID!) {
-        product(_id: $productId) {
+export const QUERY_SINGLE_ITEM = gql`
+    query singleItem($itemId: ID!) {
+        item(_id: $itemId) {
             _id
             name
             description
@@ -74,7 +74,7 @@ export const QUERY_USER = gql`
       orders {
         _id
         purchaseDate
-        products {
+        items {
           _id
           name
           description
@@ -88,8 +88,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
+  query getCheckout($items: [ID]!) {
+    checkout(items: $items) {
       session
     }
   }
