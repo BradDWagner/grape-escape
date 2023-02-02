@@ -4,13 +4,13 @@ import { useQuery } from '@apollo/client';
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import { ADD_TO_CART } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/helpers';
+import { QUERY_ITEMS } from '../utils/queries';
 
 function Item() {
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
     const [currentItem, setCurrentItem] = useState({});
-    const { loading, data } = useQuery(QUERY_PRODUCTS);
+    const { loading, data } = useQuery(QUERY_ITEMS);
     const { items, cart } = state;
 
     useEffect(() => {

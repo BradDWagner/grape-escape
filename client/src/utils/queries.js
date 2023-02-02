@@ -9,7 +9,7 @@ export const QUERY_TAGS = gql`
     }
 `;
 
-export const QUERY_ALL_ITEMS = gql`
+export const QUERY_ITEMS = gql`
     {
         items {
             _id
