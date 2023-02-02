@@ -3,7 +3,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
-const item = ({ item }) => {
+const Item = ({ item }) => {
     const [_, dispatch] = useStoreContext();
 
     const removeItem = item => {
@@ -52,4 +52,4 @@ const item = ({ item }) => {
     );
 }
 
-export default item;
+export default Item;
