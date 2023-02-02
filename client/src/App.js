@@ -43,10 +43,10 @@ function App() {
           <StoreProvider>
             <Nav />
             <Routes>
-              <Route path="/" element={<Item />} />
+              <Route path="/" element={<Products />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/products/:id" element={<Products />} />
+              <Route path="/items/:id" element={<Item />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
             </Routes>
           </StoreProvider>
