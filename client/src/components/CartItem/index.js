@@ -15,7 +15,7 @@ const Item = ({ item }) => {
     };
 
     const cartChange = (e) => {
-        const value = e.target.value:
+        const value = e.target.value;
         if (value === '0') {
             dispatch({
                 type: REMOVE_FROM_CART,
