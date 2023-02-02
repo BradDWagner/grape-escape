@@ -65,50 +65,50 @@ db.once('open', async () => {
 
     const products = await Product.insertMany([
         {
-            name: 'Dry Red',
-            description: 'A dry red wine',
-            image: 'image.jpg',
-            price: 12.99,
+            name: 'Tenuta San Guido Sassicaia Bolgheri',
+            description: 'World Class Dry Red Wine. Made from a blend of French groups and made in Italy, this wine is both strong and bold. It is sure to impress and slate the thirst of the dry red wine enthusiast!',
+            image: 'tenuta-san-guido-sassicaia-bolgheri.jpg',
+            price: 58.99,
             tags: [
                 tags[0]._id, tags[3]._id
             ],
             reviews: [ reviews[0]._id ] 
         },
         {
-            name: 'Sweet Red',
-            description: 'A sweet red wine',
-            image: 'image.jpg',
-            price: 14.99,
+            name: 'Quinta Das Carvalhas Ruby Port Reserva',
+            description: 'A sweet red wine, medium-bodied and made in Portugal. This port goes great with dessert and boasts an ABV of 20%, the perfert strength and pairing for anyone to make your grape-escape!',
+            image: 'Quinta-Das-Carvalhas-Ruby-Port-Reserva.jpg',
+            price: 41.99,
             tags: [
                 tags[0]._id, tags[4]._id, tags[6]._id
             ],
             reviews: [ reviews[1]._id ]
         },
         {
-            name: 'rose',
-            description: 'a rose wine!',
-            image: 'image.jpg',
-            price: 15.99,
+            name: 'Apothic Rosé',
+            description: 'This refreshing rosé from California has become very popular thanks to its light-bodied flavor of raspberry and strawberry. Easy on the wallet, this rosé and blush wine is the perfect choice for that easy evening get away!',
+            image: 'apothic-rose.jpg',
+            price: 8.97,
             tags: [
                 tags[2]._id, tags[5]._id
             ],
             reviews: [ reviews[2, 3]._id ]
         },
         {
-            name: 'Dry White',
-            description: 'A dry white wine',
-            image: 'image.jpg',
-            price: 12.99,
+            name: 'Florio Dry Marsala',
+            description: 'Great for both cooking and drinking, this dry white wine from the Sicilian sunbelt boasts hints of raisins and vanilla. It is a fortified wine meaning that even if the chicken marsala lacks flavor, you will enjoy it as if from a michelin restaurant anyways!',
+            image: 'florio-dry-marsala.jpg',
+            price: 14.99,
             tags: [
                 tags[1]._id, tags[3]._id
             ],
             reviews: [ reviews[4]._id ]
         },
         {
-            name: 'Sweet White',
-            description: 'A sweet white wine',
-            image: 'image.jpg',
-            price: 17.99,
+            name: 'Pacific Rim Sweet Riesling',
+            description: 'Straight from the Columbia Valley in the beautiful PNW, this white wine brings the flavors of pineapple, peach, and a touch of honey and finishes bright and crisp. Due to its low price and refreshing flavors, this riesling is in high demand. The perfect sipping for slipping away from the stress of the day!',
+            image: 'pacific-rim-sweet-riesling.jpg',
+            price: 8.99,
             tags: [
                 tags[1]._id, tags[4]._id
             ],
