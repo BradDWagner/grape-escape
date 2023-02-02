@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_TAGS = gql`
+export const QUERY_TAG = gql`
     {
         tags {
             _id
