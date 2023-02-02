@@ -52,4 +52,4 @@ const Item = ({ item }) => {
     );
 }
 
-export default item;
+export default Item;
