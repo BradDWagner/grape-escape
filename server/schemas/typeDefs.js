@@ -25,10 +25,19 @@ const typeDefs = gql`
         reviews: [Review]
     }
 
+    input ItemInput {
+        _id: ID
+        name: String
+        description: String
+        image: String
+        price: Float
+        tags: [Tag]
+        reviews: [Review]
+    } 
+
     type Tag {
         _id: ID
         name: String
-        items: [Item]
     }
 
     type Review {
@@ -64,6 +73,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addComment(_id: ID!, comment: String!): Item
         likeReview(_id: ID!): Review
+        addItem(item: ItemInput): Item
     }
 `;
 

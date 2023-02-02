@@ -88,3 +88,19 @@ export const LIKE_REVIEW = gql`
         }
     }
 `;
+
+export const ADD_ITEM = gql`
+    mutation addItem($item: itemInput!) {
+      addItem(item: $item) {
+        _id
+        name
+        description
+        image
+        price
+        tags {
+          _id
+          name
+        }
+      }
+    }
+`;
