@@ -9,7 +9,10 @@ const resolvers = {
       return await Tag.find()
     },
     items: async () => {
-      return await Item.find().populate('tags')
+      return await Item.find().populate('tags').populate('reviews').populate({
+        path: 'reviews',
+        populate: { path: 'user', model: "User"}
+      })
     },
     itemsByTag: async (parent, { tagId }) => {
       return await Item.find({
@@ -19,7 +22,7 @@ const resolvers = {
     item: async (parent, { _id }) => {
       return await Item.findById(_id).populate('tags').populate('reviews').populate({
         path: 'reviews',
-        populate: { path: 'user' }
+        populate: { path: 'user', model: "User" }
       });
     },
     user: async (parent, args, context) => {
@@ -105,13 +108,13 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-      }
+    // updateUser: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+    //   }
 
-      throw new AuthenticationError('Not logged in');
-    },
+    //   throw new AuthenticationError('Not logged in');
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -131,11 +134,15 @@ const resolvers = {
     },
     //TODO: double check context is working right
     addComment: async (parent, { _id, comment }, context) => {
-      const newReview = await Review.create({ comment: comment, user: context.user._id })
-      return await Item.findByIdAndUpdate(_id, { $push: { reviews: newReview } }, { new: true }).populate('reviews').populate({
-        path: 'reviews',
-        populate: { path: 'user' }
-      });
+      console.log(context.user._id)
+      if (context.user) {
+        const newReview = await Review.create({ comment: comment, user: context.user._id })
+        return await Item.findByIdAndUpdate(_id, { $push: { reviews: newReview } }, { new: true }).populate('reviews').populate({
+          path: 'reviews',
+          populate: { path: 'user', model: 'User' }
+        });
+      }
+
     },
     likeReview: async (parent, { _id }) => {
       return await Review.findByIdAndUpdate(_id, { $inc: { likes: 1 } }, { new: true }).poplulate('user')

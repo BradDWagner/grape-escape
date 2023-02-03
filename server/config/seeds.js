@@ -50,7 +50,7 @@ db.once('open', async () => {
 
     await Review.deleteMany();
 
-    const reviews = await Review.insertMany([
+    const reviews = await Review.create([
         { comment: 'delicious', user: users[0]._id },
         { comment: 'very fruity', user: users[1]._id },
         { comment: 'Not red and not white!', user: users[2]._id },
@@ -93,7 +93,7 @@ db.once('open', async () => {
             tags: [
                 tags[2]._id, tags[5]._id
             ],
-            reviews: [ reviews[2, 3]._id ]
+            reviews: [ reviews[2]._id, reviews[3]._id ]
         },
         {
             name: 'Florio Dry Marsala',
