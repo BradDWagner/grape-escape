@@ -5,21 +5,21 @@ import { UPDATE_TAGS, UPDATE_CURRENT_TAG, } from '../../utils/actions';
 import { QUERY_TAG } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
-function FilterMenu() {
+function TagMenu() {
     const [state, dispatch] = useStoreContext();
 
     const { tags } = state;
 
-    const { loading, data: filterData } = useQuery(QUERY_TAG);
+    const { loading, data: tagData } = useQuery(QUERY_TAG);
 
     useEffect(() => {
-        if (filterData) {
+        if (tagData) {
             dispatch({
                 type: UPDATE_TAGS,
-                tags: filterData.tags,
+                tags: tagData.tags,
             });
-            filterData.tags.forEach((filter) => {
-                idbPromise('tags', 'put', filter);
+            tagData.tags.forEach((tag) => {
+                idbPromise('tags', 'put', tag);
             });
         } else if (!loading) {
             idbPromise('tags', 'get').then((tags) => {
@@ -29,12 +29,12 @@ function FilterMenu() {
                 });
             });
         }
-    }, [filterData, loading, dispatch]);
+    }, [tagData, loading, dispatch]);
 
     const handleClick = (id) => {
         dispatch({
             type: UPDATE_CURRENT_TAG,
-            currentFilter: id,
+            currentTag: id,
         });
     };
 
@@ -56,4 +56,4 @@ function FilterMenu() {
     );
 }
 
-export default FilterMenu;
+export default TagMenu;

@@ -13,7 +13,7 @@ const stripe = loadStripe(process.env.REACT_APP_STRIPE_CLIENT);
 const Cart = () => {
     const [state, dispatch] = useStoreContext();
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-
+    
     useEffect(() => {
         if (data) {
             stripe.then((res) => {
@@ -80,7 +80,7 @@ const Cart = () => {
                         <CartItem key={item._id} item={item} />
                     ))}
                     <div className='flex-row space-between'>
-                        <strong>Total: ${cartTotal}</strong>
+                        <strong>Total: ${cartTotal()}</strong>
 
                         {Auth.loggedIn() ? (
                             <button onClick={submitOrder}>Submit Order</button>

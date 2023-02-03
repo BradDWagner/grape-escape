@@ -12,6 +12,7 @@ function SingleItem(item) {
   const { cart } = state;
 
   const addToCart = () => {
+    console.log(cart)
     const inCart = cart.find((cartItem) => cartItem._id === _id)
     if (inCart) {
       dispatch({
@@ -26,7 +27,7 @@ function SingleItem(item) {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
+        item: { ...item, purchaseQuantity: 1 }
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
     }
@@ -34,7 +35,7 @@ function SingleItem(item) {
 
   return (
     <div className='card px-1 py-1'>
-      <Link to={`/products/${_id}`}>
+      <Link to={`/items/${_id}`}>
         <img alt={name} src={`/images/${image}`}/>
         <p>{name}</p>
       </Link>

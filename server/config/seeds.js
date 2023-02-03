@@ -68,7 +68,7 @@ db.once('open', async () => {
         {
             name: 'Tenuta San Guido Sassicaia Bolgheri',
             description: 'World Class Dry Red Wine. Made from a blend of French groups and made in Italy, this wine is both strong and bold. It is sure to impress and slate the thirst of the dry red wine enthusiast!',
-            image: 'tenuta-san-guido-sassicaia-bolgheri.jpg',
+            image: 'pacific-rim-sweet-riesling.jpg',
             price: 58.99,
             tags: [
                 tags[0]._id, tags[3]._id
@@ -78,7 +78,7 @@ db.once('open', async () => {
         {
             name: 'Quinta Das Carvalhas Ruby Port Reserva',
             description: 'A sweet red wine, medium-bodied and made in Portugal. This port goes great with dessert and boasts an ABV of 20%, the perfert strength and pairing for anyone to make your grape-escape!',
-            image: 'Quinta-Das-Carvalhas-Ruby-Port-Reserva.jpg',
+            image: 'pacific-rim-sweet-riesling.jpg',
             price: 41.99,
             tags: [
                 tags[0]._id, tags[4]._id, tags[6]._id
@@ -88,7 +88,7 @@ db.once('open', async () => {
         {
             name: 'Apothic Rosé',
             description: 'This refreshing rosé from California has become very popular thanks to its light-bodied flavor of raspberry and strawberry. Easy on the wallet, this rosé and blush wine is the perfect choice for that easy evening get away!',
-            image: 'apothic-rose.jpg',
+            image: 'pacific-rim-sweet-riesling.jpg',
             price: 8.97,
             tags: [
                 tags[2]._id, tags[5]._id
@@ -98,7 +98,7 @@ db.once('open', async () => {
         {
             name: 'Florio Dry Marsala',
             description: 'Great for both cooking and drinking, this dry white wine from the Sicilian sunbelt boasts hints of raisins and vanilla. It is a fortified wine meaning that even if the chicken marsala lacks flavor, you will enjoy it as if from a michelin restaurant anyways!',
-            image: 'florio-dry-marsala.jpg',
+            image: 'pacific-rim-sweet-riesling.jpg',
             price: 14.99,
             tags: [
                 tags[1]._id, tags[3]._id
