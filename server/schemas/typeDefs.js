@@ -31,12 +31,15 @@ const typeDefs = gql`
         description: String
         image: String
         price: Float
-        tags: { 
-            _id: [ID]
-        }
-    } 
+        tags: [TagInput]
+    }
 
     type Tag {
+        _id: ID
+        name: String
+    }
+
+    input TagInput {
         _id: ID
         name: String
     }
