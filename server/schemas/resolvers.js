@@ -141,7 +141,16 @@ const resolvers = {
     },
     addItem: async (parent, args, context) => {
       if (context.user.admin) {
-        const item = await Item.create(args)
+        let tagIds = []
+        const tags = await Tag.find();
+        const tagNames = tags.map((tag) => tag.name)
+        for (i=0; i<args.tags.length; i++) {
+          if (tagNames.includes(args.tags[i].name)) {
+            const newTag = await Tag.create(args.tags[i])
+            tagIds.push(newTag._id)
+          }
+        }
+        const item = await Item.create(args, tagIds )
         return item
       }
 

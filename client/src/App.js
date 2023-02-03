@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Products from "./pages/Products";
 import OrderHistory from "./pages/OrderHistory";
-import Nav from "./components/Nav";
+import Nav from "./components/Navbar";
 import { StoreProvider } from "./utils/GlobalState";
 
 const httpLink = createHttpLink({

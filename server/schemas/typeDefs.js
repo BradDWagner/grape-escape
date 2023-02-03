@@ -31,8 +31,9 @@ const typeDefs = gql`
         description: String
         image: String
         price: Float
-        tags: [Tag]
-        reviews: [Review]
+        tags: { 
+            _id: [ID]
+        }
     } 
 
     type Tag {

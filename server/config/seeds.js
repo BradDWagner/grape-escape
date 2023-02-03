@@ -117,7 +117,7 @@ db.once('open', async () => {
         }
     ]);
 
-    console.log('Itemss seeded')
+    console.log('Items seeded')
 
     process.exit();
 })

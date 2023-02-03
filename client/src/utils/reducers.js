@@ -85,6 +85,6 @@ export const reducer = (state, action) => {
   }
 };
 
-export function useitemReducer(initialState) {
+export function useItemReducer(initialState) {
   return useReducer(reducer, initialState)
 }

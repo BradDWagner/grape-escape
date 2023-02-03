@@ -8,7 +8,7 @@ import { idbPromise } from '../../utils/helpers';
 function FilterMenu() {
     const [state, dispatch] = useStoreContext();
 
-    const { filters } = state;
+    const { tags } = state;
 
     const { loading, data: filterData } = useQuery(QUERY_TAG);
 
@@ -16,16 +16,16 @@ function FilterMenu() {
         if (filterData) {
             dispatch({
                 type: UPDATE_TAGS,
-                filters: filterData.filters,
+                tags: filterData.tags,
             });
-            filterData.filters.forEach((filter) => {
-                idbPromise('filters', 'put', filter);
+            filterData.tags.forEach((filter) => {
+                idbPromise('tags', 'put', filter);
             });
         } else if (!loading) {
-            idbPromise('filters', 'get').then((filters) => {
+            idbPromise('tags', 'get').then((tags) => {
                 dispatch({
                     type: UPDATE_TAGS,
-                    filters: filters,
+                    tags: tags,
                 });
             });
         }
@@ -40,8 +40,8 @@ function FilterMenu() {
 
     return (
         <div>
-            <h2>Filters:</h2>
-            {filters.map((item) => (
+            <h2>tags:</h2>
+            {tags.map((item) => (
                 <button
                     key={item._id}
                     onClick={() => {
