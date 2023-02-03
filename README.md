@@ -41,7 +41,6 @@ How To Contribute:
 Create a pull request and/or leave comments that the creators can review!
 
 
-
 ___
 
 <div id="instructions"></div>
