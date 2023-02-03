@@ -14,6 +14,7 @@ import Signup from "./pages/Signup";
 import Products from "./pages/Products";
 import OrderHistory from "./pages/OrderHistory";
 import Nav from "./components/Navbar";
+import Success from './pages/Success';
 import { StoreProvider } from "./utils/GlobalState";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -50,6 +51,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/items/:id" element={<Item />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
+              <Route path="/success" element={<Success />} />
             </Routes>
           </StoreProvider>
         </div>
