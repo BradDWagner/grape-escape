@@ -39,10 +39,11 @@ function FilterMenu() {
     };
 
     return (
-        <div>
-            <h2>tags:</h2>
+        <div className='filters'>
+            <h2 className='filter-name'>Product Filters</h2>
             {tags.map((item) => (
                 <button
+                    className='button'
                     key={item._id}
                     onClick={() => {
                         handleClick(item._id);
