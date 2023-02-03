@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Tag, Review } = require('../models');
+const { User, Item, Tag, Review } = require('../models');
 
 db.once('open', async () => {
     await User.deleteMany();
@@ -10,6 +10,7 @@ db.once('open', async () => {
             lastName: 'Wagner',
             email: 'brad@wagner.com',
             password: 'bradwagner',
+            admin: true
         },
         {
             firstName: 'Shel',
@@ -61,9 +62,9 @@ db.once('open', async () => {
 
     console.log('Reviews seeded')
 
-    await Product.deleteMany();
+    await Item.deleteMany();
 
-    const products = await Product.insertMany([
+    const items = await Item.insertMany([
         {
             name: 'Tenuta San Guido Sassicaia Bolgheri',
             description: 'World Class Dry Red Wine. Made from a blend of French groups and made in Italy, this wine is both strong and bold. It is sure to impress and slate the thirst of the dry red wine enthusiast!',
@@ -116,7 +117,7 @@ db.once('open', async () => {
         }
     ]);
 
-    console.log('Products seeded')
+    console.log('Itemss seeded')
 
     process.exit();
 })
