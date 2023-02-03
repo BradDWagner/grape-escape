@@ -9,7 +9,7 @@ import { idbPromise } from '../../utils/helpers';
 function ItemList() {
   const [state, dispatch] = useStoreContext();
 
-  const { currentFilter } = state;
+  const { currentTag } = state;
 
   const { loading, data } = useQuery(QUERY_ITEMS);
 
@@ -19,6 +19,7 @@ function ItemList() {
         type: UPDATE_ITEMS,
         items: data.items,
       });
+      console.log(state.items)
       data.items.forEach((item) => {
         idbPromise('items', 'put', item);
       });
@@ -33,12 +34,19 @@ function ItemList() {
   }, [data, loading, dispatch]);
 
   function filterItems() {
-    if (!currentFilter) {
+    if (!currentTag) {
       return state.items;
     }
 
     return state.items.filter(
-      (item) => item.filter._id === currentFilter
+      (item) => {
+        console.log(item)
+        for (let i=0; i<item.tags.length; i++) {
+          if (item.tags[i]._id === currentTag) {
+            return true
+          }
+        }
+      }
     );
   }
 
@@ -48,7 +56,7 @@ function ItemList() {
       {state.items.length ? (
         <div className="flex-row">
           {filterItems().map((item) => (
-            <SingleItem key={item._id} _id={item._id} image={item.image} name={item.name} price={item.price} quantity={item.quantity} />
+            <SingleItem key={item._id} _id={item._id} image={item.image} name={item.name} price={item.price}  />
           ))}
         </div>
       ) : (
