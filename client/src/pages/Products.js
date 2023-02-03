@@ -6,9 +6,11 @@ import Cart from "../components/Cart";
 const Products = () => {
   return (
     <div className="container">
+      <Cart />
+      <div className="container-2">
       <FilterMenu />
       <ItemList />
-      <Cart />
+      </div>
     </div>
   );
 };
