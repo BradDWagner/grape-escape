@@ -4,7 +4,7 @@ const { User, Item, Tag, Review } = require('../models');
 db.once('open', async () => {
     await User.deleteMany();
 
-    const users = await User.insertMany([
+    const users = await User.create([
         {
             firstName: 'Brad',
             lastName: 'Wagner',

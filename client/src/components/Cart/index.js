@@ -8,7 +8,7 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 
-const stripe = loadStripe(process.env.REACT_APP_STRIPE_CLIENT);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_CLIENT);
 
 const Cart = () => {
     const [state, dispatch] = useStoreContext();
@@ -16,16 +16,16 @@ const Cart = () => {
     
     useEffect(() => {
         if (data) {
-            stripe.then((res) => {
-                res.redirectToCheckout({ sessionID: data.checkout.session });
-            });
+          stripePromise.then((res) => {
+            res.redirectToCheckout({ sessionId: data.checkout.session });
+          });
         }
-    }, [data]);
+      }, [data]);
 
     useEffect(() => {
         async function getCart() {
             const cart = await idbPromise('cart', 'get');
-            dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+            dispatch({ type: ADD_MULTIPLE_TO_CART, items: [...cart] });
         }
 
         if (!state.cart.length) {
@@ -54,7 +54,7 @@ const Cart = () => {
         });
 
         getCheckout({
-            variables: { products: productIds },
+            variables: { items: productIds },
         });
     }
 

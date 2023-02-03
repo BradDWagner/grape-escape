@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Item, Order, Tag, Review } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')(process.env.STRIPE_SERVER);
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -52,18 +52,19 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ items: args.items });
       const line_items = [];
+      console.log('order is')
 
       const { items } = await order.populate('items');
 
       for (let i = 0; i < items.length; i++) {
-        const item = await stripe.items.create({
+        const item = await stripe.products.create({
           name: items[i].name,
           description: items[i].description,
           images: [`${url}/images/${items[i].image}`]
         });
 
         const price = await stripe.prices.create({
-          item: item.id,
+          product: item.id,
           unit_amount: items[i].price * 100,
           currency: 'usd',
         });
@@ -93,7 +94,7 @@ const resolvers = {
       return { token, user };
     },
     addOrder: async (parent, { items }, context) => {
-      console.log(context);
+      console.log(context.user);
       if (context.user) {
         const order = new Order({ items });
 
