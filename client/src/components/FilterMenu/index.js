@@ -14,7 +14,6 @@ function TagMenu() {
 
     useEffect(() => {
         if (tagData) {
-            console.log(tagData)
             dispatch({
                 type: UPDATE_TAGS,
                 tags: tagData.tags,
@@ -37,7 +36,6 @@ function TagMenu() {
             type: UPDATE_CURRENT_TAG,
             currentTag: id,
         });
-        console.log(state.currentTag)
     };
 
     return (

@@ -19,7 +19,6 @@ function ItemList() {
         type: UPDATE_ITEMS,
         items: data.items,
       });
-      console.log(state.items)
       data.items.forEach((item) => {
         idbPromise('items', 'put', item);
       });
@@ -40,7 +39,6 @@ function ItemList() {
 
     return state.items.filter(
       (item) => {
-        console.log(item)
         for (let i=0; i<item.tags.length; i++) {
           if (item.tags[i]._id === currentTag) {
             return true
