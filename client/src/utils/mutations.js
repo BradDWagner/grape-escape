@@ -51,7 +51,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($_id: ID!, comment: String) {
+  mutation addComment($_id: ID!, $comment: String) {
     addComment(_id: $_id, comment: $comment) {
         _id
         name

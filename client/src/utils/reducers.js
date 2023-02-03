@@ -26,11 +26,11 @@ export const reducer = (state, action) => {
         cart: [...state.cart, action.item],
       };
 
-    case ADD_MULTIPLE_TO_CART:
-      return {
-        ...state,
-        cart: [...state.cart, ...action.items],
-      };
+    // case ADD_MULTIPLE_TO_CART:
+    //   return {
+    //     ...state,
+    //     cart: [...state.cart, ...action.items],
+    //   };
 
     case UPDATE_CART_QUANTITY:
       return {
@@ -85,6 +85,6 @@ export const reducer = (state, action) => {
   }
 };
 
-export function useitemReducer(initialState) {
+export function useItemReducer(initialState) {
   return useReducer(reducer, initialState)
 }

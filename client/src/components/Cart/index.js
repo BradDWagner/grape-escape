@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { loadStripe } from '@stripe/stripe.js';
+import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
@@ -8,7 +8,7 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 
-const stripe = loadStripe(process.env.STRIPE_CLIENT);
+const stripe = loadStripe(process.env.REACT_APP_STRIPE_CLIENT);
 
 const Cart = () => {
     const [state, dispatch] = useStoreContext();

@@ -3,7 +3,7 @@ import ItemList from "../components/ItemList";
 import FilterMenu from "../components/FilterMenu";
 import Cart from "../components/Cart";
 
-const Home = () => {
+const Products = () => {
   return (
     <div className="container">
       <FilterMenu />
