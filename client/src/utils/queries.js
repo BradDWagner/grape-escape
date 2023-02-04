@@ -21,6 +21,14 @@ export const QUERY_ITEMS = gql`
                 _id
                 name
             }
+            reviews {
+                _id
+                comment
+                user {
+                    firstName
+                    lastName
+                }
+            }
         }
     }
 `;

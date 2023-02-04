@@ -12,7 +12,6 @@ function SingleItem(item) {
   const { cart } = state;
 
   const addToCart = () => {
-    console.log(cart)
     const inCart = cart.find((cartItem) => cartItem._id === _id)
     if (inCart) {
       dispatch({
