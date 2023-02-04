@@ -7,6 +7,11 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
+          {Auth.isAdmin() ? 
+          <li className="mx-1">
+            <Link to="/admin">Admin</Link>
+          </li> 
+          : null}
           <li className="mx-1">
             <Link to="/orderHistory">Order History</Link>
           </li>
