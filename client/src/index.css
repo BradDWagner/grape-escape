@@ -69,6 +69,15 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
+<<<<<<< HEAD
+=======
+  font-size: 30px;
+  color: #FFFFFF;
+  position: fixed;
+  top: 10;
+  right: 0;
+  overflow: auto;
+>>>>>>> 7cc8937f7ede4f2e142872123bc74e3a06c24f16
 }
 
 .cart:hover {
@@ -209,6 +218,7 @@
   align-items: end;
 }
 
+
 .first-name {
   color: #FFFFFF;
   margin-right: 10px;
@@ -243,6 +253,7 @@
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 .back {
   color: #FFFFFF;
   text-decoration: none;
@@ -253,3 +264,5 @@
   color: #FFFFFF;
   font-weight: bold;
 }
+=======
+>>>>>>> 7cc8937f7ede4f2e142872123bc74e3a06c24f16
