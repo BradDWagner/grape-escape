@@ -13,14 +13,14 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_CLIENT);
 const Cart = () => {
     const [state, dispatch] = useStoreContext();
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
-    
+
     useEffect(() => {
         if (data) {
-          stripePromise.then((res) => {
-            res.redirectToCheckout({ sessionId: data.checkout.session });
-          });
+            stripePromise.then((res) => {
+                res.redirectToCheckout({ sessionId: data.checkout.session });
+            });
         }
-      }, [data]);
+    }, [data]);
 
     useEffect(() => {
         async function getCart() {
@@ -71,19 +71,19 @@ const Cart = () => {
     return (
         <div className='cart'>
             <div className='close' onClick={cartToggle}>
-                [close]
+                Close Cart
             </div>
-            <h2>Your Cart</h2>
+            <h2 className='cart-title'>Your Shopping Cart</h2>
             {state.cart.length ? (
-                <div>
+                <div className='cart-container'>
                     {state.cart.map((item) => (
                         <CartItem key={item._id} item={item} />
                     ))}
-                    <div className='flex-row space-between'>
+                    <div className='cart-text flex-row space-between'>
                         <strong>Total: ${cartTotal()}</strong>
 
                         {Auth.loggedIn() ? (
-                            <button onClick={submitOrder}>Submit Order</button>
+                            <button className='button' onClick={submitOrder}>Submit Order</button>
                         ) : (
                             <span>(log in to check out)</span>
                         )}
@@ -91,8 +91,7 @@ const Cart = () => {
                 </div>
             ) : (
                 <h3>
-                    <span role='img' aria-label='broken heart'>💔</span>
-                    Your cart is EMPTY!
+                    Cart Empty
                 </h3>
             )}
         </div>

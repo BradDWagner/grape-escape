@@ -15,11 +15,11 @@ function OrderHistory() {
   return (
     <>
       <div className="container my-1">
-        <Link to="/">← Back to Products</Link>
+        <Link to="/" className="back">← Back to Products</Link>
 
         {user ? (
           <>
-            <h2>
+            <h2 className="order-history">
               Order History for {user.firstName} {user.lastName}
             </h2>
             {user.orders.map((order) => (

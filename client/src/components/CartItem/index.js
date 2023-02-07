@@ -37,14 +37,14 @@ const CartItem = ({ item }) => {
                 <img src={`/images/${item.image}`} alt='product image'
                 />
             </div>
-            <div>
+            <div className='cart-items'>
                 <div>{item.name}, ${item.price}</div>
                 <div>
-                    <span>Qty:</span>
-                    <input type='number' placeholder='1' value={item.purchaseQuantity} onChange={cartChange}
+                    <span className='qty'>Qty:</span>
+                    <input className='qtybox' type='number' placeholder='1' value={item.purchaseQuantity} onChange={cartChange}
                     />
-                    <span role='img' aria-label='trash' onClick={() => removeItem(item)}>
-                        🗑️
+                    <span className='delete' role='img' aria-label='trash' onClick={() => removeItem(item)}>
+                        Delete
                     </span>
                 </div>
             </div>
