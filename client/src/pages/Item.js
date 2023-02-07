@@ -87,7 +87,6 @@ function Item() {
   }
   return (
     <>
-      {/* {console.log(currentItem)} */}
       {currentItem && cart ? (
         <div className="container">
           <Link to="/">Back to Products</Link>
