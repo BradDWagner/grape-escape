@@ -89,7 +89,7 @@ db.once('open', async () => {
             name: 'Apothic Rosé',
             description: 'This refreshing rosé from California has become very popular thanks to its light-bodied flavor of raspberry and strawberry. Easy on the wallet, this rosé and blush wine is the perfect choice for that easy evening get away!',
             image: 'pacific-rim-sweet-riesling.jpg',
-            price: 8.97,
+            price: 8.99,
             tags: [
                 tags[2]._id, tags[5]._id
             ],

@@ -2,6 +2,9 @@
   "name": "grape-escape",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "16.17.1"
+  },
   "main": "server/server.js",
   "scripts": {
     "start": "node server --ignore client",
