@@ -86,8 +86,8 @@ export const LIKE_REVIEW = gql`
 `;
 
 export const ADD_ITEM = gql`
-    mutation addItem($item: itemInput!) {
-      addItem(item: $item) {
+    mutation addItem($name: String!, $description: String!, $price: Float!, $tags: [String]) {
+      addItem(name: $name, description: $description, price: $price, tags: $tags) {
         _id
         name
         description

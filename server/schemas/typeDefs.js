@@ -77,7 +77,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addComment(_id: ID!, comment: String!): Item
         likeReview(_id: ID!): Review
-        addItem(item: ItemInput): Item
+        addItem(name: String!, description: String!, price: Float!, tags: [String]): Item
     }
 `;
 
