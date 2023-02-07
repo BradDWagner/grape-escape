@@ -172,3 +172,37 @@
   flex-direction: column;
   align-items: end;
 }
+
+.first-name {
+  color: #FFFFFF;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.first-name2 {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+}
+
+.last-name {
+  color: #FFFFFF;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.last-name2 {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+}
+
+.loginbtn {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup2 {
+  color: #FFFFFF;
+}
