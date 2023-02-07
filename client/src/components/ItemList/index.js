@@ -50,7 +50,7 @@ function ItemList() {
 
   return (
     <div className="my-2">
-      <h2>Available Wines</h2>
+      <h2 className='h2'>Available Wines</h2>
       {state.items.length ? (
         <div className="flex-row">
           {filterItems().map((item) => (

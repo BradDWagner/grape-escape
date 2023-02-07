@@ -36,7 +36,7 @@ function SingleItem(item) {
     <div className='card px-1 py-1'>
       <Link to={`/items/${_id}`}>
         <img alt={name} src={`/images/${image}`}/>
-        <p>{name}</p>
+        <p className='wine-name'>{name}</p>
       </Link>
       <div>
         <span>${price}</span>

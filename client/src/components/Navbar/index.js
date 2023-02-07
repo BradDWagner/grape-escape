@@ -40,10 +40,7 @@ function Nav() {
   return (
     <header className="flex-row px-1">
       <h1>
-        <Link to="/">
-          <span role="img" aria-label="wine glass">
-            🍷
-          </span>
+        <Link to="/" className="title">
           House of Pinot
         </Link>
       </h1>
