@@ -13,6 +13,7 @@ import {
 import { QUERY_ITEMS } from '../utils/queries';
 import { ADD_COMMENT } from '../utils/mutations';
 import { idbPromise } from '../utils/helpers';
+import Auth from '../utils/auth'
 
 function Item() {
   const [state, dispatch] = useStoreContext();
@@ -78,15 +79,15 @@ function Item() {
   const handleCommentSubmit = async (event) => {
     try {
       const newComment = await addComment({
-        variables: { _id: id, comment: commentInput.value}
+        variables: { _id: id, comment: commentInput.value }
       })
-    } catch(e) {
+    } catch (e) {
       console.log(e)
     }
   }
   return (
     <>
-    {/* {console.log(currentItem)} */}
+      {/* {console.log(currentItem)} */}
       {currentItem && cart ? (
         <div className="container">
           <Link to="/">Back to Products</Link>
@@ -107,22 +108,26 @@ function Item() {
 
           <img src={`/images/${currentItem.image}`} alt={currentItem.name} />
 
-          <h3>Tell us what you think!</h3>
-          <form onSubmit={handleCommentSubmit}>
+          {Auth.loggedIn() ?
             <div>
-              <input
-                placeholder="Leave a review"
-                name="comment"
-                type="text"
-                id="comment"  
-                onChange={handleChange}
-              />
+              <h3>Tell us what you think!</h3>
+              <form onSubmit={handleCommentSubmit}>
+                <div>
+                  <input
+                    placeholder="Leave a review"
+                    name="comment"
+                    type="text"
+                    id="comment"
+                    onChange={handleChange}
+                  />
 
-            </div>
-            <div>
-              <button type="submit">Send</button>
-            </div>
-          </form>
+                </div>
+                <div>
+                  <button type="submit">Send</button>
+                </div>
+              </form>
+            </div> : null }
+
 
           {currentItem.reviews ? (
             <div>

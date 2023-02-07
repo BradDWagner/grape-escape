@@ -11,6 +11,11 @@ class AuthService {
     return !!token && !this.isTokenExpired(token);
   }
 
+  isAdmin() {
+    const profile = this.getProfile()
+    return profile.data.admin
+  }
+
   isTokenExpired(token) {
     try {
       const decoded = decode(token);

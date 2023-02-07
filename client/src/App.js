@@ -15,6 +15,7 @@ import Products from "./pages/Products";
 import OrderHistory from "./pages/OrderHistory";
 import Nav from "./components/Navbar";
 import Success from './pages/Success';
+import Admin from './pages/Admin'
 import { StoreProvider } from "./utils/GlobalState";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,6 +53,7 @@ function App() {
               <Route path="/items/:id" element={<Item />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
               <Route path="/success" element={<Success />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </StoreProvider>
         </div>

@@ -1,7 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Item, Order, Tag, Review } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+require('dotenv').config()
+const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SERVER);
 
 const resolvers = {
   Query: {
@@ -132,7 +133,6 @@ const resolvers = {
 
       return { token, user };
     },
-    //TODO: double check context is working right
     addComment: async (parent, { _id, comment }, context) => {
       console.log(context.user._id)
       if (context.user) {
@@ -147,24 +147,30 @@ const resolvers = {
     likeReview: async (parent, { _id }) => {
       return await Review.findByIdAndUpdate(_id, { $inc: { likes: 1 } }, { new: true }).poplulate('user')
     },
-    addItem: async (parent, args, context) => {
-      if (context.user.admin) {
-        let tagIds = []
-        const tags = await Tag.find();
-        const tagNames = tags.map((tag) => tag.name)
-        for (i=0; i<args.tags.length; i++) {
-          if (tagNames.includes(args.tags[i].name)) {
-            const newTag = await Tag.create(args.tags[i])
+    addItem: async (parent, { name, description, price, tags }, context) => {
+      let tagIds =[]
+      if (tags.length) {
+        const existingTags = await Tag.find();
+        const existingTagNames = existingTags.map((tag) => tag.name);
+        console.log(existingTagNames)
+        for (i=0; i<tags.length; i++) {
+          if (!existingTagNames.includes(tags[i])) {
+            console.log(tags[i])
+            const newTag = await Tag.create({name: tags[i]})
             tagIds.push(newTag._id)
+          } else {
+            const existingTagId = await Tag.findOne({name: tags[i]})
+            tagIds.push(existingTagId._id)
           }
         }
-        const item = await Item.create(args, tagIds )
-        return item
       }
 
-      throw new AuthenticationError('User does not have suffecient rights');
+      const newItem = await (await Item.create({name: name, description: description, price: price, tags: tagIds})).populate('tags')
+      console.log(newItem)
+      return newItem
     }
   }
 };
 
 module.exports = resolvers;
+

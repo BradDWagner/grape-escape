@@ -13,7 +13,8 @@ const itemSchema = new Schema({
     type: String
   },
   image: {
-    type: String
+    type: String,
+    default: 'pacific-rim-sweet-riesling.jpg'
   },
   price: {
     type: Number,
