@@ -7,6 +7,7 @@ function Admin() {
     const [formState, setFormState] = useState({ name: "", description: "", price: "", tags: "" })
     const [errorMessage, setErrorMessage] = useState("")
     const [addItem, { error }] = useMutation(ADD_ITEM)
+    const priceCheck = /^\d+\.\d{2}$/
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -20,8 +21,15 @@ function Admin() {
         event.preventDefault();
 
         const priceFloat = parseFloat(formState.price)
+        console.log(typeof priceFloat)
+        console.log(priceFloat)
+        console.log(priceCheck)
         if (!formState.name.length || !formState.description.length || !formState.price.length || !formState.tags.length) {
             setErrorMessage('Please make sure all fields are filled out')
+            return
+        }
+        else if (!priceCheck.test(priceFloat)) {
+            setErrorMessage('Price must be in format XX.XX')
             return
         }
 
