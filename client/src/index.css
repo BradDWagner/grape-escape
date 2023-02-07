@@ -1,3 +1,7 @@
+#body {
+  background-color: #987284;
+}
+
 .container-2 {
   display: flex;
   flex-direction: row;
@@ -14,9 +18,13 @@
 
 .flex-row a {
   text-decoration: none;
-  color: black;
+  color: #FFFFFF;
   font-weight: bold;
   text-align: center;
+}
+
+.flex-row a:hover {
+  color: #FFFFFF;
 }
 
 .flex-row img {
@@ -29,10 +37,27 @@
   list-style-type: none;
 }
 
+.mx-1:hover {
+  cursor: pointer;
+}
+
+.mx-1 a:hover {
+  color: #FFFFFF;
+}
+
 .cart {
   display: flex;
   justify-content: end;
   font-size: 30px;
+  color: #FFFFFF;
+  position: fixed;
+  top: 10;
+  right: 0;
+}
+
+.cart:hover {
+  cursor: pointer;
+  font-size: 35px;
 }
 
 .filters {
@@ -45,16 +70,35 @@
   width: 75px;
   border-style: none;
   margin: 10px;
+  color: #191919;
+  border-radius: 10px;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: #607466;
+  color: #FFFFFF;
 }
 
 .button2 {
   width: 100px;
   border-style: none;
   margin: 10px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  font-weight: bold;
+  padding: 5px;
+}
+.button2:hover {
+  cursor: pointer;
+  background-color: #607466;
+  color: #FFFFFF;
+  padding: 5px;
 }
 
 .filter-name {
-  font-size: 15px;
+  font-size: 25px;
+  color: #FFFFFF;
+  margin-top: 100px;
 }
 
 .card {
@@ -65,7 +109,66 @@
   width: 18rem;
   min-height: 18rem;
   max-height: 18rem;
-  background-color: aqua;
+  margin-top: 10px;
 }
 
+.h2 {
+  color: #FFFFFF;
+}
 
+.wine-name {
+  color: #191919;
+}
+
+.my-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login {
+  color: #FFFFFF;
+  font-size: 30px;
+}
+
+.email {
+  color: #FFFFFF;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.email2 {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+}
+
+.pass {
+  color: #FFFFFF;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.pass2 {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+}
+
+.signup {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login2 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
