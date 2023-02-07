@@ -1,7 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Item, Order, Tag, Review } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+require('dotenv').config()
+const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SERVER);
 
 const resolvers = {
   Query: {
