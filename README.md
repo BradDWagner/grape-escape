@@ -1,4 +1,4 @@
-# **grape-escape**
+# **House of Pinot**
 
 ___
 
@@ -17,24 +17,23 @@ ___
 <div id="description"></div>
 
 ## **Description**
-
+House of Pinot is an e-commerce website for a local winery. House of Pinto utilizes React, MongoDB, Mongoose, Graphql, Express, Node.js, Stripe, and JWT.
 
 ___
 
 <div id="usage"></div>
 
 ## **Intended Usage**
- 
+ House of Pinot is intended to be used to buy and sell wine.
 
 ___
 
 <div id="contributions"></div>
 
 ## **Contributions**
-* Brad Wagner: 
-* Shel Cloyd: 
-* Alice Nouhouemale:  
-* Chris Kang: 
+* Brad Wagner: back-end: everything
+* Shel Cloyd: front-end: React, CSS
+* Alice Nouhouemale: front-end: React, CSS
 
 How To Contribute:
 
@@ -45,10 +44,10 @@ ___
 
 <div id="instructions"></div>
 
-## **How to Use Uno Moss**
+## **How to Use House of Pinot**
 1. Visit the website - [Grape Escape](URL here)
 2. Click Sign-Up to create an account or Login to access exisiting profile
-3. 
+3. Start shopping!
 
 
 ___
@@ -70,7 +69,15 @@ ___
 <div id="tech"></div>
 
 ## **Technologies Used**
-* =
+* React
+* CSS
+* MongoDB
+* Mongoose
+* Graphql
+* Express
+* Node.js
+* Stripe
+* JWT
 
 ___
 
@@ -80,8 +87,6 @@ ___
 * GitHub: https://github.com/BradDWagner
 * Email: BradDWagner@Outlook.com
 * GitHub: https://github.com/shelcloyd
-* Email: None@none.com
+* Email: shel.cloyd@gmail.com
 * GitHub: https://github.com/Alicenouhouemale
 * Email: alicenouhouemale@gmail.com 
-* GitHub: https://github.com/kjman26
-* Email:  Kjman26@gmail.com
