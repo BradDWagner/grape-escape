@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useStoreContext } from '../../utils/GlobalState';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
+import Auth from '../../utils/auth'
 
 function SingleItem(item) {
   const [state, dispatch] = useStoreContext();
@@ -41,7 +42,7 @@ function SingleItem(item) {
       <div>
         <span>${price}</span>
       </div>
-      <button onClick={addToCart} className='button2'>Add to Cart</button>
+      {Auth.loggedIn() ? <button onClick={addToCart} className='button2'>Add to Cart</button> : null }
     </div>
   );
 }

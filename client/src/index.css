@@ -53,6 +53,7 @@
   position: fixed;
   top: 10;
   right: 0;
+  overflow: auto;
 }
 
 .cart:hover {
@@ -173,6 +174,7 @@
   align-items: end;
 }
 
+
 .first-name {
   color: #FFFFFF;
   margin-right: 10px;
@@ -206,3 +208,4 @@
 .signup2 {
   color: #FFFFFF;
 }
+

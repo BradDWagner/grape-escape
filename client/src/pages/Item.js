@@ -87,7 +87,6 @@ function Item() {
   }
   return (
     <>
-      {/* {console.log(currentItem)} */}
       {currentItem && cart ? (
         <div className="container">
           <Link to="/">Back to Products</Link>
@@ -97,7 +96,11 @@ function Item() {
 
           <p>
             <strong>Price:</strong>${currentItem.price}{" "}
-            <button onClick={addToCart}>Add to Cart</button>
+            <button 
+              disabled={!Auth.loggedIn()}
+              onClick={addToCart}
+              >
+                Add to Cart</button>
             <button
               disabled={!cart.find((p) => p._id === currentItem._id)}
               onClick={removeFromCart}

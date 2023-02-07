@@ -58,11 +58,20 @@ const Cart = () => {
         });
     }
 
+    function cartQuantity() {
+        let quantity = 0
+        for (let i=0; i< state.cart.length; i++) {
+            quantity = quantity + state.cart[i].purchaseQuantity
+        }
+        return quantity
+    }
+
     if (!state.cartOpen) {
         return (
             <div className='cart-closed' onClick={cartToggle}>
                 <span role='img' aria-label='cart' className='cart'>
-                    Cart
+                    Cart   
+                    <span>{cartQuantity()}</span>
                 </span>
             </div>
         );
