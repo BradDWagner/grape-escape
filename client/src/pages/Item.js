@@ -112,11 +112,11 @@ function Item() {
           <img src={`/images/${currentItem.image}`} alt={currentItem.name} />
 
           {Auth.loggedIn() ?
-            <div>
+            <div className='comment-box'>
               <h3>Tell us what you think!</h3>
               <form onSubmit={handleCommentSubmit}>
                 <div>
-                  <input
+                  <textarea
                     placeholder="Leave a review"
                     name="comment"
                     type="text"

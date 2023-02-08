@@ -69,15 +69,6 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
-<<<<<<< HEAD
-=======
-  font-size: 30px;
-  color: #FFFFFF;
-  position: fixed;
-  top: 10;
-  right: 0;
-  overflow: auto;
->>>>>>> 7cc8937f7ede4f2e142872123bc74e3a06c24f16
 }
 
 .cart:hover {
@@ -253,7 +244,6 @@
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
 .back {
   color: #FFFFFF;
   text-decoration: none;
@@ -264,5 +254,19 @@
   color: #FFFFFF;
   font-weight: bold;
 }
-=======
->>>>>>> 7cc8937f7ede4f2e142872123bc74e3a06c24f16
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.comment-box h3 {
+  display: flex
+}
+
+.comment-box textarea {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+}
