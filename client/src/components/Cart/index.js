@@ -8,7 +8,7 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_CLIENT);
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
     const [state, dispatch] = useStoreContext();
@@ -71,7 +71,7 @@ const Cart = () => {
             <div className='cart-closed' onClick={cartToggle}>
                 <span role='img' aria-label='cart' className='cart'>
                     Cart   
-                    <span>{cartQuantity()}</span>
+                    <span className='cart-quantity'>{cartQuantity()}</span>
                 </span>
             </div>
         );

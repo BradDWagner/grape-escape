@@ -38,6 +38,13 @@ function TagMenu() {
         });
     };
 
+    function clearTags() {
+        dispatch({
+            type: UPDATE_CURRENT_TAG,
+            currentTag: "",
+        })
+    }
+
     return (
         <div className='filters'>
             <h2 className='filter-name'>Product Filters</h2>
@@ -52,6 +59,11 @@ function TagMenu() {
                     {item.name}
                 </button>
             ))}
+            <button
+                className='button'
+                onClick={clearTags}>
+                Clear tags
+            </button>
         </div>
     );
 }

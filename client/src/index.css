@@ -55,6 +55,13 @@
   background-color: #FFFFFF;
   padding: 10px;
 }
+
+.cart-quantity {
+  background-color: #c3a0b0;
+  width: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
 .close {
   font-size: 15px;
 }
@@ -69,15 +76,10 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
-<<<<<<< HEAD
-=======
-  font-size: 30px;
-  color: #FFFFFF;
-  position: fixed;
-  top: 10;
-  right: 0;
-  overflow: auto;
->>>>>>> 7cc8937f7ede4f2e142872123bc74e3a06c24f16
+}
+
+.cart-closed .cart {
+  width: 100px;
 }
 
 .cart:hover {
@@ -253,7 +255,6 @@
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
 .back {
   color: #FFFFFF;
   text-decoration: none;
@@ -264,5 +265,64 @@
   color: #FFFFFF;
   font-weight: bold;
 }
-=======
->>>>>>> 7cc8937f7ede4f2e142872123bc74e3a06c24f16
+
+.item-description {
+  margin: 20px;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 20px;
+}
+
+.comment-box h3 {
+  display: flex
+}
+
+.comment-box textarea {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+  width: 40%;
+
+}
+
+.comment-box button {
+  width: 100px;
+  border-style: none;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.review-box h2{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.review {
+  background-color: #FFFFFF;
+  border: 5px solid #c3a0b0;
+  border-radius: 15px;
+  margin-top: 20px;
+  width: 50%;
+}
+
+.review p {
+  margin-left: 15px
+}
+
+.admin input, textarea {
+  border-radius: 10px;
+  border-style: none;
+  padding: 10px;
+  width: 1000%;
+}
+
+.admin label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}

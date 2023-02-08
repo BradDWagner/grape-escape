@@ -45,7 +45,7 @@ ___
 <div id="instructions"></div>
 
 ## **How to Use House of Pinot**
-1. Visit the website - [Grape Escape](URL here)
+1. Visit the website - [House of Pinot](https://whispering-coast-13412.herokuapp.com/)
 2. Click Sign-Up to create an account or Login to access exisiting profile
 3. Start shopping!
 
@@ -62,7 +62,7 @@ ___
 <div id="link"></div>
 
 ## **Link to Application**
-* 
+* https://whispering-coast-13412.herokuapp.com/
 
 ___
 
