@@ -89,19 +89,26 @@ function Item() {
     <>
       {currentItem && cart ? (
         <div className="container">
+          
           <Link to="/">Back to Products</Link>
+          <Cart />
 
-          <h2>{currentItem.name}</h2>
-          <p>{currentItem.description}</p>
+          <div className='item-description'>
+            <h2>{currentItem.name}</h2>
+            <p>{currentItem.description}</p>
+          </div>
+
 
           <p>
             <strong>Price:</strong>${currentItem.price}{" "}
-            <button 
+            <button
+              className='button2'
               disabled={!Auth.loggedIn()}
               onClick={addToCart}
-              >
-                Add to Cart</button>
+            >
+              Add to Cart</button>
             <button
+            className='button2'
               disabled={!cart.find((p) => p._id === currentItem._id)}
               onClick={removeFromCart}
             >
@@ -129,22 +136,28 @@ function Item() {
                   <button type="submit">Send</button>
                 </div>
               </form>
-            </div> : null }
+              <hr/>
+            </div> : null}
 
 
           {currentItem.reviews ? (
-            <div>
+            <div className='review-box'>
+              <h2>Here's what others had to say about this product</h2>
+
               {currentItem.reviews.map((review) => (
-                <div key={review._id}>
-                  <h3>{review.user.firstName} says</h3>
-                  <p>{review.comment}</p>
+                <div className='review'>
+                  <div key={review._id}>
+                    <h3>{review.user.firstName} says:</h3>
+                    <p>{review.comment}</p>
+                    <hr />
+                  </div>
                 </div>
               ))}
             </div>
           ) : null}
         </div>
       ) : null}
-      <Cart />
+
     </>
   );
 }

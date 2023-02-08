@@ -71,7 +71,7 @@ const Cart = () => {
             <div className='cart-closed' onClick={cartToggle}>
                 <span role='img' aria-label='cart' className='cart'>
                     Cart   
-                    <span>{cartQuantity()}</span>
+                    <span className='cart-quantity'>{cartQuantity()}</span>
                 </span>
             </div>
         );

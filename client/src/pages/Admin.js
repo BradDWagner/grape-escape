@@ -49,10 +49,10 @@ function Admin() {
     return (
         <div>
             {Auth.isAdmin() ?
-            <div className="container my-1">
+            <div className="container my-1 admin">
                 <h2>Add new product</h2>
                 <form onSubmit={handleFormSubmit}>
-                    <div className="flex-row space-between my-2">
+                    <div className="flex-row">
                         <label htmlFor="name">Name:</label>
                         <input
                             placeholder="Item name"
@@ -62,7 +62,7 @@ function Admin() {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className="flex-row space-between my-2">
+                    <div className="flex-row">
                         <label htmlFor="description">Description:</label>
                         <textarea
                             placeholder="Description"
@@ -72,7 +72,7 @@ function Admin() {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className="flex-row space-between my-2">
+                    <div className="flex-row">
                         <label htmlFor="name">Price:</label>
                         <input
                             placeholder="00.00"
@@ -82,7 +82,7 @@ function Admin() {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className="flex-row space-between my-2">
+                    <div className="flex-row">
                         <label htmlFor="name">Tags:</label>
                         <input
                             placeholder="List tags, separated by commas"
@@ -100,7 +100,7 @@ function Admin() {
                     )}
 
                     <div className="flex-row flex-end">
-                        <button type="submit">Submit</button>
+                        <button className='button2' type="submit">Submit</button>
                     </div>
                 </form>
             </div>
